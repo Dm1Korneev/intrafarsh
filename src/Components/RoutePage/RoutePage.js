@@ -6,7 +6,9 @@ import { fitBounds } from 'google-map-react/utils';
 
 import { GOOGLE_MAP_API_KEY } from 'Constants';
 
+import Marker from './Marker';
 import { Container } from './RoutePage.styled';
+import mapStyles from './mapStyles';
 
 const propTypes = {
   getRoutePoints: PropTypes.func.isRequired,
@@ -28,17 +30,6 @@ const RoutePage = (props) => {
   if (!routePoints.length) {
     return null;
   }
-
-  const renderMarkers = (map, maps) => {
-    routePoints.map((point) => new maps.Marker({
-      position: {
-        lat: point.Latitude,
-        lng: point.Longitude,
-      },
-      map,
-      title: point.PointName,
-    }));
-  };
 
   const bounds = {
     ne: {
@@ -70,17 +61,32 @@ const RoutePage = (props) => {
 
   const { center, zoom } = fitBounds(bounds, size);
 
+  const mapOptions = {
+    styles: mapStyles, // straight out of something like snazzymaps
+  };
+
   return (
     <Container>
       <GoogleMapReact
         bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
         defaultCenter={center}
         defaultZoom={zoom}
+        scaleControl={false}
+        zoomControl={false}
+        fullscreenControl={false}
         streetViewControl={false}
         mapTypeControl={false}
-        yesIWantToUseGoogleMapApiInternals
-        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
-      />
+        options={mapOptions}
+      >
+        {routePoints.map((point) => (
+          <Marker
+            key={point.PointID}
+            lat={point.Latitude}
+            lng={point.Longitude}
+            text={point.PointName}
+          />
+        ))}
+      </GoogleMapReact>
     </Container>
   );
 };

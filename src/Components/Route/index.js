@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 import Avatar from 'Components/Avatar';
 import RouteTitle from './RouteTitle';
-import Comments from './Comments';
-import Likes from './Likes';
+import CommentsComponent from './Comments';
+import LikesComponent from './Likes';
 
 import {
   AvatarContainer, Container, HeaderContainer, OuterContainer, RouteImageContainer, RouteTitleContainer, UserTitle,
@@ -20,22 +20,27 @@ const propTypes = {
     Name: PropTypes.string.isRequired,
     Photo: PropTypes.string.isRequired,
   }).isRequired,
+  Count: PropTypes.shape({
+    Comments: PropTypes.number.isRequired,
+    Likes: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 const Route = (props) => {
   const {
-    RouterName, RouteID, ImageUrl, User,
+    RouterName, RouteID, ImageUrl, User, Count,
   } = props;
 
   const { Name, Photo } = User;
+  const { Comments, Likes } = Count;
 
   return (
     <OuterContainer>
       <Link to={`/route/${RouteID}`}>
         <HeaderContainer>
           <UserTitle>{Name}</UserTitle>
-          <Comments count={348} />
-          <Likes count={348} />
+          <CommentsComponent count={Comments} />
+          <LikesComponent count={Likes} />
         </HeaderContainer>
         <Container>
           <RouteImageContainer url={ImageUrl} />

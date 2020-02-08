@@ -5,7 +5,6 @@ import { Route as RouteFromRouter, HashRouter as Router, Switch } from 'react-ro
 import RoutesPage from 'Components/RoutesPage';
 import RoutePage from 'Components/RoutePage';
 import PlacePage from 'Components/PlacePage';
-import Navigation from 'Components/Navigation';
 
 const propTypes = {
   appStart: PropTypes.func.isRequired,
@@ -21,10 +20,9 @@ const App = (props) => {
   return (
     <Router>
       <Switch>
-        <RouteFromRouter path="/routes" component={RoutesPage} />
         <RouteFromRouter path="/route/:routeID" component={RoutePage} />
         <RouteFromRouter path="/place" component={PlacePage} />
-        <RouteFromRouter path="/" component={Navigation} />
+        <RouteFromRouter path="/" component={RoutesPage} />
       </Switch>
     </Router>
   );
