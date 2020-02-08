@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Route as RouteFromRouter, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route as RouteFromRouter, HashRouter as Router, Switch } from 'react-router-dom';
 
 import RoutesPage from 'Components/RoutesPage';
 import RoutePage from 'Components/RoutePage';
