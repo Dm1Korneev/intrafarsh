@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
-    padding-top: 15px;
+    padding-top: 20px;
 `;
 
 export const Hashtag = styled.a`

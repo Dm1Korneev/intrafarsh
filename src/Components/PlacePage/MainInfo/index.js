@@ -10,6 +10,7 @@ import Photos from './Photos';
 import Details from './Details';
 import Hashtags from './Hashtags';
 import Comments from './Comments';
+import Audio from './Audio';
 
 const MainInfo = () => (
   <>
@@ -17,6 +18,7 @@ const MainInfo = () => (
     <Photos />
     <Hashtags />
     <Details />
+    <Audio />
 
     <Statistics>
       <CommentsComponent count={320} />
