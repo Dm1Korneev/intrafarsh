@@ -21,18 +21,10 @@ const App = (props) => {
   return (
     <Router>
       <Switch>
-        <RouteFromRouter path="/routes">
-          <RoutesPage />
-        </RouteFromRouter>
-        <RouteFromRouter path="/route">
-          <RoutePage />
-        </RouteFromRouter>
-        <RouteFromRouter path="/place">
-          <PlacePage />
-        </RouteFromRouter>
-        <RouteFromRouter path="/">
-          <Navigation />
-        </RouteFromRouter>
+        <RouteFromRouter path="/routes" component={RoutesPage} />
+        <RouteFromRouter path="/route/:routeID" component={RoutePage} />
+        <RouteFromRouter path="/place" component={PlacePage} />
+        <RouteFromRouter path="/" component={Navigation} />
       </Switch>
     </Router>
   );
