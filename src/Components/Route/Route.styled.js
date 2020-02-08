@@ -28,4 +28,8 @@ export const RouteImageContainer = styled.div`
     overflow: hidden;
     height: 100%;
     width: 100%;
+    background: linear-gradient(310.8deg, #FFFFFF -30.5%, rgba(255, 255, 255, 0) 80.89%), 
+        url(${(props) => props.url});
+    background-size: cover;    
+
 `;

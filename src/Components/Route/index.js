@@ -23,9 +23,7 @@ const Route = (props) => {
     <OuterContainer>
       <Link to={`/route/${routeID}`}>
         <Container>
-          <RouteImageContainer>
-            <img src={imageUrl} alt={routerName} />
-          </RouteImageContainer>
+          <RouteImageContainer url={imageUrl} />
           <RouteTitleContainer>
             <RouteTitle title={routerName} />
           </RouteTitleContainer>
