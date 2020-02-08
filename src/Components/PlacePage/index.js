@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Header from 'Components/Header';
 import UserBlock from './UserBlock';
@@ -7,9 +9,14 @@ import MainInfo from './MainInfo';
 
 import { Container, Container2, ContainerMain } from './PlacePage.styled';
 
-const PlacePage = () => (
+const propTypes = {
+  /* eslint-disable-next-line react/forbid-prop-types */
+  history: PropTypes.any.isRequired,
+};
+
+const PlacePage = ({ history }) => (
   <Container>
-    <Header />
+    <Header backAction={() => history.push('/route/664139')} />
     <UserBlock
       title="Jane Shvetsova"
       place="Moscow"
@@ -27,4 +34,6 @@ const PlacePage = () => (
   </Container>
 );
 
-export default PlacePage;
+PlacePage.propTypes = propTypes;
+
+export default withRouter(PlacePage);
