@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    height: 50px;
+    padding-left: 10px;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    padding: 30px;
-    justify-content: space-between;
+`;
+
+export const Title = styled.span`
+    padding-left: 5px;
 `;

@@ -22,15 +22,7 @@ const RoutePage = (props) => {
     <Container>
       <Header />
       <RoutesContainer>
-        {routes.map((route) => {
-          const routeProps = {
-            routeID: route.RouteID,
-            routerName: route.RouterName,
-            imageUrl: route.ImageUrl,
-          };
-
-          return (<Route key={route.RouteID} {...routeProps} />);
-        })}
+        {routes.map((route) => (<Route key={route.RouteID} {...route} />))}
       </RoutesContainer>
     </Container>
   );

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const OuterContainer = styled.div`
-    padding-top: 27px;
+    padding-top: 18px;
     padding-bottom: 27px;
 `;
 
@@ -31,5 +31,18 @@ export const RouteImageContainer = styled.div`
     background: linear-gradient(310.8deg, #FFFFFF -30.5%, rgba(255, 255, 255, 0) 80.89%), 
         url(${(props) => props.url});
     background-size: cover;    
+`;
 
+export const HeaderContainer = styled.div`
+    height: 28px;
+    padding-left: 65px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
+export const UserTitle = styled.div`
+    flex-grow: 1;
+    font-size: 18px;
 `;

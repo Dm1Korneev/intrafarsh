@@ -5,30 +5,45 @@ import { Link } from 'react-router-dom';
 
 import Avatar from 'Components/Avatar';
 import RouteTitle from './RouteTitle';
+import Comments from './Comments';
+import Likes from './Likes';
 
 import {
-  AvatarContainer, Container, OuterContainer, RouteImageContainer, RouteTitleContainer,
+  AvatarContainer, Container, HeaderContainer, OuterContainer, RouteImageContainer, RouteTitleContainer, UserTitle,
 } from './Route.styled';
 
 const propTypes = {
-  routerName: PropTypes.string.isRequired,
-  routeID: PropTypes.number.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  RouterName: PropTypes.string.isRequired,
+  RouteID: PropTypes.number.isRequired,
+  ImageUrl: PropTypes.string.isRequired,
+  User: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Photo: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const Route = (props) => {
-  const { routerName, routeID, imageUrl } = props;
+  const {
+    RouterName, RouteID, ImageUrl, User,
+  } = props;
+
+  const { Name, Photo } = User;
 
   return (
     <OuterContainer>
-      <Link to={`/route/${routeID}`}>
+      <Link to={`/route/${RouteID}`}>
+        <HeaderContainer>
+          <UserTitle>{Name}</UserTitle>
+          <Comments count={348} />
+          <Likes count={348} />
+        </HeaderContainer>
         <Container>
-          <RouteImageContainer url={imageUrl} />
+          <RouteImageContainer url={ImageUrl} />
           <RouteTitleContainer>
-            <RouteTitle title={routerName} />
+            <RouteTitle title={RouterName} />
           </RouteTitleContainer>
           <AvatarContainer>
-            <Avatar url={imageUrl} name={routerName} />
+            <Avatar url={Photo} name={Name} />
           </AvatarContainer>
         </Container>
       </Link>

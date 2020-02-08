@@ -8,8 +8,7 @@ export const Container = styled.main`
 export const RoutesContainer = styled.div`
     border-top-left-radius: 40px;
     padding-left: 16px;
-    padding-top: 16px;
     padding-bottom: 1rem;
-    background-color: #DADADA;
+    background-color: #FFFFFF;
     min-height: 100vh;
 `;
