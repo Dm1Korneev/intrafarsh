@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Route as RouteFromRouter, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import logo from './logo.svg';
-import './App.css';
+import Routes from 'Components/Routes';
+import Route from 'Components/Route';
+import Place from 'Components/Place';
+import Navigation from 'Components/Navigation';
 
 const propTypes = {
   appStart: PropTypes.func.isRequired,
@@ -16,14 +19,22 @@ function App(props) {
   }, [appStart]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Intrafarsh
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <RouteFromRouter path="/routes">
+          <Routes />
+        </RouteFromRouter>
+        <RouteFromRouter path="/route">
+          <Route />
+        </RouteFromRouter>
+        <RouteFromRouter path="/place">
+          <Place />
+        </RouteFromRouter>
+        <RouteFromRouter path="/">
+          <Navigation />
+        </RouteFromRouter>
+      </Switch>
+    </Router>
   );
 }
 
