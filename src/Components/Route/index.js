@@ -1,11 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Route() {
+const propTypes = {
+  routeNumber: PropTypes.number.isRequired,
+};
+
+const Route = (props) => {
+  const { routeNumber } = props;
+
   return (
     <div>
-      Route
+      {`Route ${routeNumber}`}
     </div>
   );
-}
+};
+
+Route.propTypes = propTypes;
 
 export default Route;

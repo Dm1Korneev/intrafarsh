@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Route as RouteFromRouter, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import Routes from 'Components/Routes';
-import Route from 'Components/Route';
-import Place from 'Components/Place';
+import RoutesPage from 'Components/RoutesPage';
+import RoutePage from 'Components/RoutePage';
+import PlacePage from 'Components/PlacePage';
 import Navigation from 'Components/Navigation';
 
 const propTypes = {
   appStart: PropTypes.func.isRequired,
 };
 
-function App(props) {
+const App = (props) => {
   const { appStart } = props;
 
   useEffect(() => {
@@ -22,13 +22,13 @@ function App(props) {
     <Router>
       <Switch>
         <RouteFromRouter path="/routes">
-          <Routes />
+          <RoutesPage />
         </RouteFromRouter>
         <RouteFromRouter path="/route">
-          <Route />
+          <RoutePage />
         </RouteFromRouter>
         <RouteFromRouter path="/place">
-          <Place />
+          <PlacePage />
         </RouteFromRouter>
         <RouteFromRouter path="/">
           <Navigation />
@@ -36,7 +36,7 @@ function App(props) {
       </Switch>
     </Router>
   );
-}
+};
 
 App.propTypes = propTypes;
 
