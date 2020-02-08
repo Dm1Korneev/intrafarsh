@@ -9,7 +9,7 @@ const RoutePage = () => {
 
   return (
     <Container>
-      {routes.map((routeNumber) => (<Route routeNumber={routeNumber} />))}
+      {routes.map((routeNumber) => (<Route key={routeNumber} routeNumber={routeNumber} />))}
     </Container>
   );
 };
