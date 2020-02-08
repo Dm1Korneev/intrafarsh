@@ -7,7 +7,11 @@ import { Container } from './Header.styled';
 import More from './More';
 
 const propTypes = {
-  backAction: PropTypes.func.isRequired,
+  backAction: PropTypes.func,
+};
+
+const defaultProps = {
+  backAction: undefined,
 };
 
 const Header = ({ backAction }) => (
@@ -18,5 +22,6 @@ const Header = ({ backAction }) => (
 );
 
 Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
 
 export default Header;

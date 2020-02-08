@@ -7,7 +7,7 @@ import {
 import Icon from './Icon';
 
 const propTypes = {
-  count: PropTypes.number.isRequired,
+  count: PropTypes.string.isRequired,
 };
 
 const Viewed = (props) => {

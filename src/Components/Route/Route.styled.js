@@ -35,7 +35,7 @@ export const RouteImageContainer = styled.div`
 
 export const HeaderContainer = styled.div`
     height: 28px;
-    padding-left: 65px;
+    padding-left: 60px;
     padding-right: 15px;
     display: flex;
     flex-direction: row;
