@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Container } from './Route.styled';
+
 const propTypes = {
   routeNumber: PropTypes.number.isRequired,
 };
@@ -9,9 +11,9 @@ const Route = (props) => {
   const { routeNumber } = props;
 
   return (
-    <div>
+    <Container>
       {`Route ${routeNumber}`}
-    </div>
+    </Container>
   );
 };
 

@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { Container } from './RoutePage.styled';
+
 const RoutePage = () => (
-  <div>
+  <Container>
       Route
-  </div>
+  </Container>
 );
 
 export default RoutePage;
