@@ -1,12 +1,13 @@
 import React from 'react';
 
+import BackIcon from 'Components/BackIcon';
+
 import { Container } from './Header.styled';
-import Back from './Back';
 import More from './More';
 
 const Header = () => (
   <Container>
-    <Back />
+    <BackIcon />
     <More />
   </Container>
 );

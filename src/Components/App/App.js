@@ -21,7 +21,7 @@ const App = (props) => {
     <Router>
       <Switch>
         <RouteFromRouter path="/route/:routeID" component={RoutePage} />
-        <RouteFromRouter path="/place" component={PlacePage} />
+        <RouteFromRouter path="/place/:pointID" component={PlacePage} />
         <RouteFromRouter path="/" component={RoutesPage} />
       </Switch>
     </Router>

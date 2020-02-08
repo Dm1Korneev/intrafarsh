@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Avatar from 'Components/Avatar';
+import CommentsComponent from 'Components/Comments';
+import LikesComponent from 'Components/Likes';
+
 import RouteTitle from './RouteTitle';
-import CommentsComponent from './Comments';
-import LikesComponent from './Likes';
 
 import {
   AvatarContainer, Container, HeaderContainer, OuterContainer, RouteImageContainer, RouteTitleContainer, UserTitle,

@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import GoogleMapReact from 'google-map-react';
 import { fitBounds } from 'google-map-react/utils';
 
 import { GOOGLE_MAP_API_KEY } from 'Constants';
 
-import Marker from './Marker';
+import BackButton from './BackButton';
+
 import { Container } from './RoutePage.styled';
 import mapStyles from './mapStyles';
 
@@ -14,6 +16,8 @@ const propTypes = {
   getRoutePoints: PropTypes.func.isRequired,
   routePoints: PropTypes.arrayOf(PropTypes.object),
   routeID: PropTypes.string.isRequired,
+  /* eslint-disable-next-line react/forbid-prop-types */
+  history: PropTypes.any.isRequired,
 };
 
 const defaultProps = {
@@ -21,7 +25,25 @@ const defaultProps = {
 };
 
 const RoutePage = (props) => {
-  const { getRoutePoints, routeID, routePoints } = props;
+  const {
+    getRoutePoints, routeID, routePoints, history,
+  } = props;
+
+  const renderMarkers = (map, maps) => {
+    routePoints.map((point) => {
+      const marker = new maps.Marker({
+        position: {
+          lat: point.Latitude,
+          lng: point.Longitude,
+        },
+        map,
+        title: point.PointName,
+        animation: maps.Animation.DROP,
+      });
+      marker.addListener('click', () => history.push(`/place/${point.PointID}`));
+      return marker;
+    });
+  };
 
   useEffect(() => {
     getRoutePoints({ routeID });
@@ -77,16 +99,10 @@ const RoutePage = (props) => {
         streetViewControl={false}
         mapTypeControl={false}
         options={mapOptions}
-      >
-        {routePoints.map((point) => (
-          <Marker
-            key={point.PointID}
-            lat={point.Latitude}
-            lng={point.Longitude}
-            text={point.PointName}
-          />
-        ))}
-      </GoogleMapReact>
+        yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
+      />
+      <BackButton />
     </Container>
   );
 };
@@ -94,4 +110,4 @@ const RoutePage = (props) => {
 RoutePage.propTypes = propTypes;
 RoutePage.defaultProps = defaultProps;
 
-export default RoutePage;
+export default withRouter(RoutePage);
