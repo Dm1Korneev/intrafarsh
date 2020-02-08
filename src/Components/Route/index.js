@@ -1,19 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+
+import Avatar from 'Components/Avatar';
+
 import { Container } from './Route.styled';
 
 const propTypes = {
-  routeNumber: PropTypes.number.isRequired,
+  routerName: PropTypes.string.isRequired,
+  routeID: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
 };
 
 const Route = (props) => {
-  const { routeNumber } = props;
+  const { routerName, routeID, imageUrl } = props;
 
   return (
-    <Container>
-      {`Route ${routeNumber}`}
-    </Container>
+    <Link to={`/route/${routeID}`}>
+      <Container>
+        {`routerName: ${routerName}`}
+        {`routeID: ${routeID}`}
+        <Avatar url={imageUrl} name={routerName} />
+      </Container>
+    </Link>
   );
 };
 

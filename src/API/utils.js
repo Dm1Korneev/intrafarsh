@@ -26,7 +26,7 @@ const parseJSON = (response) => new Promise(
 export const apiCall = (body) => new Promise((resolve, reject) => {
   fetch(URI, optionsConstructor(body))
     .then(parseJSON)
-    .then(({ response, result }) => (response.ok ? resolve(result) : reject(result)))
+    .then(({ response, result }) => (response.ok ? resolve(result.result) : reject(result)))
     .catch((error) => reject(error));
 });
 

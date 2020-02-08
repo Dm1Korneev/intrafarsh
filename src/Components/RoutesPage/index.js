@@ -1,17 +1,17 @@
-import React from 'react';
+import commonHoc from 'Components/commonHoc';
+import { getRoutes } from 'Redux/actions';
+import { routesSelector } from 'Selectors/routes';
 
-import Route from 'Components/Route';
+import RoutesPage from './RoutesPage';
 
-import { Container } from './RoutesPage.styled';
+const mapStateToProps = (state) => ({
+  routes: routesSelector(state),
+});
 
-const RoutePage = () => {
-  const routes = [1, 2, 3, 4, 5];
-
-  return (
-    <Container>
-      {routes.map((routeNumber) => (<Route key={routeNumber} routeNumber={routeNumber} />))}
-    </Container>
-  );
+const mapDispatchToProps = {
+  getRoutes,
 };
 
-export default RoutePage;
+export default commonHoc(RoutesPage, {
+  mapDispatchToProps, mapStateToProps,
+});
